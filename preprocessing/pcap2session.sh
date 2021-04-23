@@ -21,11 +21,19 @@ if [ "$#" -eq 4 ]; then
 else 
   SplitCap="../tool/SplitCap.exe"
 fi
+Pcap=$1
+Destination=$2
+Type=$3
 
 # start split
-if [ "$2" -eq "-f" ]; then
-  echo "INFO spliting the PCAP file info each flow"
-  mono
-
+if [ "$3" = "-f" ]; then
+  echo "[INFO] spliting the PCAP file info each flow"
+  # split pcap file
+  mono $SplitCap -p 1000 -b 50000 -r $Pcap -s flow -o $Destination/AllLayers
+  # -p 指定一次同时处理多少个flow/session/packet -b 指定最大缓存字节数
+  mono $SplitCap -p 1000 -b 50000 -r $Pcap -s flow -o $Destination/L7
+  # remove duplicate files
+  fdupes -rdN $Destination/AllLayers
+  fdupes -rdN $Destination/L7
 fi
 
