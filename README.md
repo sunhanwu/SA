@@ -18,6 +18,7 @@ data文件夹位置在`../data` 与代码目录同级
        - mono: `sudo apt install mono`
        - fdupes: `sudo apt-get install fdupes`
        - SplitCap: 前往[SplitCap官网下载](https://www.netresec.com/?page=SplitCap)即可，注意存放位置，按照下面脚本所提示使用
+       - Tshark: `sudo apt-get install Tshark`  安装Tshark的时候，editcap也是一起安装，脚本中主要使用的是editcap
   2. pcap2session.sh：处理pcap文件脚本，可以将pcap文件处理为flow, session和pcaket
 
      脚本一次处理一个pcap文件，支持按照flow， session和packet三种格式分割，用法如下：
