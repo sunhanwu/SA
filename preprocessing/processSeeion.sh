@@ -15,6 +15,22 @@ function help() {
   exit 1;
 }
 
+function topNfile() {
+  # 接受第一个可选参数
+  if [ ! $1 ]; then
+    SOURCE_DIR=.
+  else
+    SOURCE_DIR=$1 
+  fi
+  # 接受第二个可选参数
+  if [ ! $2 ]; then
+    TOP_NUM=600
+  else
+    TOP_NUM=$2
+  fi
+  files=`ls -S`
+}
+
 if [ "$#" -lt 1 ]; then
   help
 fi
