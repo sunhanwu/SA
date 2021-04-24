@@ -19,6 +19,7 @@ function help() {
 # 选取SOURCE_DIR中按照文件大小排序的前TOP_NUM个文件名
 # files topNfile(SOURCE_DIR, TOP_NUM)
 function topNfile() {
+  echo "[INFO] read $1 $2 files"
   # 接受第一个可选参数
   if [ ! $1 ]; then
     SOURCE_DIR=.
@@ -46,15 +47,16 @@ DESTINATION_DIR=$2
 if [ ! $3 ]; then
   SESSION_COUNT_MAX=60000
 else
-  SESSION_COUNT_MAX=$2
+  SESSION_COUNT_MAX=$3
 fi
 if [ ! $4 ]; then
   TRIMED_FILE_LIMIT=784
 else
-  TRIMED_FILE_LIMIT=$3
+  TRIMED_FILE_LIMIT=$4
 fi
 
 topNfile $SOURCE_DIR $SESSION_COUNT_MAX
+echo "[INFO] cut $SOURCE_DIR $TOP_NUM files, limit $TRIMED_FILE_LIMIT"
 for file in ${files[@]};
 do
   # 使用dd命令截取pcap文件前TRIMED_FIEL_LIMIT个字节内容
