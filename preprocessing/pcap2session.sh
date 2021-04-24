@@ -43,8 +43,8 @@ if [ "$Type" = "-f" ]; then
   # -d 删除重复文件，只保留一个副本文件
   # -N 没有删除提示
   echo "[INFO] spliting the $Pcap info flows(remove duplicate files)"
-  fdupes -rdN $Destination/AllLayers
-  fdupes -rdN $Destination/L7
+  fdupes -rqdN $Destination/AllLayers
+  fdupes -rqdN $Destination/L7
 elif [ "$Type" = "-s" ]; then
   echo "[INFO] spliting the $Pcap info each session(save all layers)"
   # split pcap file into sessions
@@ -54,8 +54,8 @@ elif [ "$Type" = "-s" ]; then
   mono $SplitCap -p 1000 -b 50000 -r $Pcap -o $Destination/L7 -y L7
   # remove duplicate files
   echo "[INFO] spliting the $Pcap info each session(remove duplicate files)"
-  fdupes -rdN $Destination/AllLayers
-  fdupes -rdN $Destination/L7
+  fdupes -rqdN $Destination/AllLayers
+  fdupes -rqdN $Destination/L7
 else
   echo "[ERROR] Wrong format of command!"
   echo "[INFO] Usage is: pcap2session.sh <SOURCE_DIR> <DESTINATION_DIR> <TYPE> <SplitCap_DIR=../tool/SplitCap.exe>"
