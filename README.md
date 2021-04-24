@@ -32,7 +32,7 @@
 
 ## preprocessing
 
-1. pcap2session.sh：处理pcap文件脚本，可以将pcap文件处理为flow, session和pcaket
+1. pcap2session.sh：处理pcap文件脚本，可以将pcap文件处理为flow和session
 
    脚本一次处理一个pcap文件，支持按照flow， session和packet三种格式分割，用法如下：
 
@@ -40,7 +40,7 @@
    Usage is: pcap2session.sh <SOURCE_DIR> <DESTINATION_DIR> <TYPE>
    		<SOURCE_DIR>: pcap file path
    		<DESTINATION_DIR>: path where results are stored
-   		<TYPE>: -f (flow) | -s (session) | -p (pcaket)
+   		<TYPE>: -f (flow) | -s (session)
    		<SplitCap>: the SplitCap.exe path, default path is ../tool/SplitCap.exe
    ```
 

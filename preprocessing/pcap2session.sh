@@ -2,13 +2,14 @@
 
 # AUTHOR: sunhanwu(sunhanwu@iie.ac.cn)
 # Reference from https://github.com/jeevan-thapa/USTC-TK2016
+# func: 将pcap文件按照flow或者session拆分为小的pcap
 
 # help info
 if [ "$#" -lt 3 ]; then
   echo "[ERROR] Wrong format of command!"
   echo "[INFO] Usage is: pcap2session.sh <SOURCE_DIR> <DESTINATION_DIR> <TYPE> <SplitCap_DIR=../tool/SplitCap.exe>"
   echo "[INFO] <SOURCE_DIR>: the pcap file path"
-  echo "[INFO] <SOURCE_DIR>: path where results are stored"
+  echo "[INFO] <DESTINATION_DIR>: path where results are stored"
   echo "[INFO] <TYPE>: -f (flow) | -s (session)"
   echo "[INFO] <SplitCap>: the SplitCap.exe path, default path is ../tool/SplitCap.exe"
   exit 1;
