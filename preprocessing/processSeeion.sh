@@ -57,9 +57,9 @@ fi
 
 topNfile $SOURCE_DIR $SESSION_COUNT_MAX
 echo "[INFO] cut $SOURCE_DIR $TOP_NUM files, limit $TRIMED_FILE_LIMIT"
-mkdir $DESTINATION_DIR
+mkdir -p $DESTINATION_DIR
 for file in ${files[@]};
 do
   # 使用dd命令截取pcap文件前TRIMED_FIEL_LIMIT个字节内容
-  dd if=$SOURCE_DIR$file of=$DESTINATION_DIR$file ibs=$TRIMED_FILE_LIMIT conv=sync
+  dd if=$SOURCE_DIR$file of=$DESTINATION_DIR$file ibs=$TRIMED_FILE_LIMIT count=1 conv=sync
 done
