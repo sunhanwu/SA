@@ -48,4 +48,4 @@ def precessingTrain(trainDataPath, T='a', length=784, top_num=1000):
 
 if __name__ == '__main__':
     # pcap2png('./test.bin', './test.png')
-    precessingTrain("../../data/train")
+    precessingTrain("../../data/test")

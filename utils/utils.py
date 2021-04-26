@@ -8,7 +8,7 @@ def extractLabelDict(tcpdump_list_path):
     """
     result = {}
     with open(tcpdump_list_path, 'r') as f:
-        data = [x.strip() for x in f.readlnes()]
+        data = [x.strip() for x in f.readlines()]
     for line in data:
         items = line.split(' ')
         ip_src = items[-4]
@@ -18,7 +18,7 @@ def extractLabelDict(tcpdump_list_path):
         ip_dst = '-'.join([str(int(x)) for x in ip_dst.split('.')])
         port_dst = items[-5]
         label = int(items[-2])
-        key = '_'.join([ip_dst, port_dst, ip_src, port_src])
+        key = '_'.join([ip_src, port_src,ip_dst, port_dst ])
         if key not in result.keys():
             result[key] = label
     return result
@@ -30,12 +30,12 @@ def filename2key(filename:str):
     """
     items = filename.split('.')
     keys = items[1].split('_')
-    keys = []
+    #keys = []
     key = '_'.join(keys[1:])
     return key
 
 if __name__ == '__main__':
-    label_dict = 
+    #label_dict = 
     key = filename2key('tcpdump.TCP_12-5-132-10_80_172-16-117-111_10319.bin')
     print(key)
     
