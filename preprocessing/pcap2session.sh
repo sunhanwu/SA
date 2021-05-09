@@ -48,14 +48,14 @@ if [ "$Type" = "-f" ]; then
 elif [ "$Type" = "-s" ]; then
   echo "[INFO] spliting the $Pcap info each session(save all layers)"
   # split pcap file into sessions
-  mono $SplitCap -p 1000 -b 50000 -r $Pcap -o $Destination/AllLayers -y L7
+  mono $SplitCap -p 1000 -b 50000 -r $Pcap -o $Destination/AllLayers
   echo "[INFO] spliting the $Pcap info each session(save L7)"
   # split pcap file into sessions
   mono $SplitCap -p 1000 -b 50000 -r $Pcap -o $Destination/L7 -y L7
   # remove duplicate files
   echo "[INFO] spliting the $Pcap info each session(remove duplicate files)"
-  fdupes -rqdN $Destination/AllLayers
-  fdupes -rqdN $Destination/L7
+#  fdupes -rqdN $Destination/AllLayers
+#  fdupes -rqdN $Destination/L7
 else
   echo "[ERROR] Wrong format of command!"
   echo "[INFO] Usage is: pcap2session.sh <SOURCE_DIR> <DESTINATION_DIR> <TYPE> <SplitCap_DIR=../tool/SplitCap.exe>"

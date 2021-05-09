@@ -8,17 +8,18 @@ def log(name:str, file=True):
     :param file:
     :return:
     """
-    logger = logging.getLogger("iam_test_{}".format(name))
+    logger = logging.getLogger("{}".format(name))
     handler = logging.StreamHandler()
     handler.setLevel(logging.INFO)
     formater = logging.Formatter("%(asctime)s-%(name)s-%(levelname)s-%(message)s")
     handler.setFormatter(formater)
     if file:
-        file_handler = logging.handlers.RotatingFileHandler(filename='./log/{}.txt'.format(name),
+        file_handler = logging.handlers.RotatingFileHandler(filename='../log/{}.txt'.format(name),
                                                             maxBytes= 100 * 1024 * 1024, backupCount=10, \
                                                             encoding='utf-8')
         file_handler.setFormatter(formater)
         logger.addHandler(file_handler)
-    logger.addHandler(handler)
-    logger.setLevel(logging.INFO)
+    # logger.addHandler(handler)
+    # logger.setLevel(logging.INFO)
     return logger
+
