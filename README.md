@@ -104,3 +104,34 @@
 
    模型一共包含三层CNN + MaxPooling
 
+2. CNN 实验结果
+
+### 3.2 LSTM
+1. 特征
+
+   因为该任务是一个二分类任务，相对简单，因此我们这里不将整个流的所有信息全部加载到模型中，这里只提取了一条流中每一个包的长度作为模型的输入LSTM中，将任务转化为一个自然语言处理的分类任务。其中每一条流相当于一个句子，流中的每一个包的长度相当于一个单词序号。
+
+2. 模型架构
+
+   LSTM模型架构如图所示:
+   
+   ![](https://ipic-picgo.oss-cn-beijing.aliyuncs.com/LSTM.png)
+   
+   模型包括一个embedding层和两个LSTM层以及一个全连接层。
+   
+   首先将流的长度信息输入至embedding层，可以将离散的长度信息值转化为连续的高维词向量embedding，然后将此embedding输入至LSTM层中，经过两层输出，将每个LSTM神经元的信息输入至全连接层中，最后输出为二分类。
+   
+3. 模型超参数
+    MAX_SEQ = 64
+    HIDDEN_DIM = 512
+    LABEL_NUMS = 2
+    epochs = 4
+    logger_steps = 500
+    BATCH_SIZE = 512
+    embedding_dim = 64
+    LR = 0.01
+
+4. 模型结果
+   
+
+   
